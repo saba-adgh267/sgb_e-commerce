@@ -1,11 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>SGB Commerce</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js"></script>
 </head>
 <body>
-    
+    <header>
+        <h1>Saima Gul Bashir Commerce</h1>
+        <button class="hamburger" onclick="toggleSidebar()">&#9776;</button>
+    </header>
+    <nav id="sidebar" class="sidebar">
+        <button class="closebtn" onclick="closeSidebar()">&times;</button>
+        <ul>
+            <li><a href="#" onclick="showProducts('default')">Home</a></li>
+            <li><a href="#" onclick="showProducts('casual')">Casual Wear</a></li>
+            <li><a href="#" onclick="showProducts('shoes')">Shoes</a></li>
+            <li><a href="#" onclick="showProducts('sports')">Sportswear</a></li>
+            <li><a href="#" onclick="showProducts('winter')">Winter Collection</a></li>
+        </ul>
+    </nav>
+    <main>
+        <h2>Products:</h2>
+        <div id="products-section" class="products">
+            <!-- Default Products Grid -->
+            <!-- This section will be dynamically updated by JavaScript -->
+        </div>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>SGB Commerce</h3>
+            </div>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Return Policy</a>
+                <a href="#">Contact Us</a>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
