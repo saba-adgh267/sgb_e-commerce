@@ -21,9 +21,10 @@ header {
     background: none;
     border: none;
     cursor: pointer;
-    position: absolute;
+    position: fixed;
     top: 10px;
     left: 10px;
+    z-index: 1000;
 }
 
 .sidebar {
@@ -31,7 +32,7 @@ header {
     width: 250px;
     position: fixed;
     top: 0;
-    left: -250px; /* Initially hidden */
+    left: -250px;
     background-color: #333;
     color: white;
     overflow-x: hidden;
@@ -75,19 +76,29 @@ main {
     transition: margin-left 0.3s;
 }
 
+#products-heading, #deals-heading {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Products Section */
 .products {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    gap: 10px; /* Reduced gap */
+    margin: 0 auto 40px auto; /* Centered with automatic left and right margins */
+    max-width: 1200px; /* Limiting the maximum width to ensure centering */
 }
 
 .product {
     border: 1px solid #ddd;
-    padding: 15px;
-    text-align: center;
+    padding: 10px; /* Adjusted padding */
     background-color: #fff;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
     transition: transform 0.3s ease;
+    box-sizing: border-box; /* Ensure padding and border are included in width and height */
+    position: relative; /* Needed for the absolute positioning of the image */
 }
 
 .product:hover {
@@ -95,16 +106,104 @@ main {
 }
 
 .product img {
+    display: block;
+    width: 100%;
+    height: 0;
+    padding-bottom: 100%; /* Creates a square aspect ratio */
+    background-color: #dcdcdc; /* Grey background color */
+    object-fit: cover; /* Ensures the image covers the area */
+}
+
+/* Deals Section */
+.deals-large-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two large boxes side by side */
+    gap: 10px; /* Reduced gap */
+    margin: 0 auto 20px auto; /* Centered with automatic left and right margins */
+    max-width: 1200px; /* Limiting the maximum width to ensure centering */
+}
+
+.deal-box.large {
+    border: 1px solid #ddd;
+    padding: 10px; /* Adjusted padding */
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    text-align: center;
+    box-sizing: border-box; /* Ensure padding and border are included in width and height */
+}
+
+.deal-box.large:hover {
+    transform: translateY(-5px);
+}
+
+.deal-box.large img {
+    max-height: 250px; /* Adjusted to be longer */
     width: 100%;
     height: auto;
+    object-fit: cover; /* Ensures the image covers the area */
 }
 
-.product h3 {
-    margin: 10px 0;
+.deals-small-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    gap: 10px; /* Reduced gap */
+    margin: 0 auto; /* Centered with automatic left and right margins */
+    max-width: 1200px; /* Limiting the maximum width to ensure centering */
 }
 
-.product p {
+.deal-box.small {
+    border: 1px solid #ddd;
+    padding: 10px; /* Adjusted padding */
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    text-align: center;
+    height: auto; /* Adjusted height to auto */
+    box-sizing: border-box; /* Ensure padding and border are included in width and height */
+    position: relative; /* Needed for the absolute positioning of the image */
+}
+
+.deal-box.small img {
+    display: block;
+    width: 100%;
+    height: 0;
+    padding-bottom: 100%; /* Creates a square aspect ratio */
+    background-color: #dcdcdc; /* Grey background color */
+    object-fit: cover; /* Ensures the image covers the area */
+}
+
+.deal-box.small h3 {
+    margin: 8px 0; /* Reduced margin */
+}
+
+.deal-box.small p {
     color: #777;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .products {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on smaller screens */
+    }
+
+    .deals-large-grid {
+        grid-template-columns: 1fr; /* Stacks the large deal boxes */
+    }
+
+    .deals-small-grid {
+        grid-template-columns: 1fr 1fr; /* Two columns for smaller deals */
+    }
+}
+
+@media (max-width: 480px) {
+    .products {
+        grid-template-columns: 1fr; /* 1 column on very small screens */
+    }
+
+    .deals-small-grid {
+        grid-template-columns: 1fr; /* One column for smaller deals */
+    }
 }
 
 footer {
@@ -134,7 +233,6 @@ footer {
     text-decoration: underline;
 }
 
-/* Adjust the main content margin when the sidebar is visible */
 main.shifted {
-    margin-left: 250px; /* Same as the width of the sidebar */
+    margin-left: 250px;
 }

@@ -10,9 +10,10 @@
 </head>
 <body>
     <header>
-        <h1>Saima Gul Bashir Commerce</h1>
+        <h1>SGB Commerce</h1>
         <button class="hamburger" onclick="toggleSidebar()">&#9776;</button>
     </header>
+    
     <nav id="sidebar" class="sidebar">
         <button class="closebtn" onclick="closeSidebar()">&times;</button>
         <ul>
@@ -23,13 +24,25 @@
             <li><a href="#" onclick="showProducts('winter')">Winter Collection</a></li>
         </ul>
     </nav>
+
     <main>
-        <h2>Products:</h2>
+        <h2 id="products-heading">Products:</h2>
         <div id="products-section" class="products">
-            <!-- Default Products Grid -->
             <!-- This section will be dynamically updated by JavaScript -->
         </div>
+    
+        <!-- Deals section (only visible on the home page) -->
+        <div id="deals-section" class="deals-section">
+            <h2 id="deals-heading">Deals:</h2>
+            <div class="deals-large-grid">
+            </div>
+    
+            <div class="deals-small-grid">
+            </div>
+        </div>
     </main>
+    
+
     <footer>
         <div class="footer-content">
             <div class="footer-brand">
@@ -45,3 +58,4 @@
     </footer>
 </body>
 </html>
+

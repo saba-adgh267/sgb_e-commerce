@@ -1,4 +1,3 @@
-// Sample data for different categories
 const productsData = {
     casual: [
         { img: 'https://via.placeholder.com/200', name: 'Casual Product 1', price: '$30' },
@@ -60,28 +59,26 @@ const productsData = {
         { img: 'https://via.placeholder.com/200', name: 'Winter Product 2', price: '$90' },
         // Add more products here
     ],
-    default: [
-        { img: 'https://via.placeholder.com/200', name: 'Product 1', price: '$30' },
-        { img: 'https://via.placeholder.com/200', name: 'Product 2', price: '$45' },
-        { img: 'https://via.placeholder.com/200', name: 'Product 3', price: '$20' },
-        { img: 'https://via.placeholder.com/200', name: 'Product 4', price: '$55' },
-        { img: 'https://via.placeholder.com/200', name: 'Product 5', price: '$60' },
-        { img: 'https://via.placeholder.com/200', name: 'Product 6', price: '$55' },
-        { img: 'https://via.placeholder.com/200', name: 'Product 7', price: '$50' },
-        { img: 'https://via.placeholder.com/200', name: 'Product 8', price: '$25' },
-        { img: 'https://via.placeholder.com/200', name: 'Product 9', price: '$100' },
-        { img: 'https://via.placeholder.com/200', name: 'Product 10', price: '$25' },
-        { img: 'https://via.placeholder.com/200', name: 'Product 11', price: '$80' },
-        { img: 'https://via.placeholder.com/200', name: 'Product 12', price: '$90' }
-    ],
+    
 };
 
 function showProducts(category) {
     const productsSection = document.getElementById('products-section');
+    const heading = document.getElementById('products-heading');
+    const dealsSection = document.getElementById('deals-section'); // Select the deals section
     productsSection.innerHTML = ''; // Clear existing content
 
     // Get the products for the selected category
     const products = productsData[category] || [];
+
+    // Update heading based on category
+    if (category === 'default') {
+        heading.innerText = 'Featured Products:';
+        dealsSection.style.display = 'block'; // Show deals section on the home page
+    } else {
+        heading.innerText = `${category.charAt(0).toUpperCase() + category.slice(1)} Products:`;
+        dealsSection.style.display = 'none'; // Hide deals section for other categories
+    }
 
     // Create and append product elements
     products.forEach(product => {
@@ -98,8 +95,10 @@ function showProducts(category) {
     });
 }
 
+
 // Show default products when the page loads
-document.addEventListener('DOMContentLoaded', () => showProducts('casual'));
+document.addEventListener('DOMContentLoaded', () => showProducts('default'));
+
 function toggleSidebar() {
     const sidebar = document.getElementById('sidebar');
     const main = document.querySelector('main');
@@ -118,3 +117,46 @@ function closeSidebar() {
     sidebar.style.left = '-250px'; // Hide sidebar
     main.classList.remove('shifted');
 }
+
+const dealsData = {
+    large: [
+        { img: 'https://via.placeholder.com/400x200', name: 'Deal 1', price: '$100' },
+        { img: 'https://via.placeholder.com/400x200', name: 'Deal 2', price: '$120' }
+    ],
+    small: [
+        { img: 'https://via.placeholder.com/150', name: 'Product 1', price: '$25' },
+        { img: 'https://via.placeholder.com/150', name: 'Product 2', price: '$25' },
+        { img: 'https://via.placeholder.com/150', name: 'Product 3', price: '$20' },
+        { img: 'https://via.placeholder.com/150', name: 'Product 4', price: '$25' },
+        { img: 'https://via.placeholder.com/150', name: 'Product 5', price: '$25' },
+        { img: 'https://via.placeholder.com/150', name: 'Product 6', price: '$25' },
+        { img: 'https://via.placeholder.com/150', name: 'Product 7', price: '$25' },
+        { img: 'https://via.placeholder.com/150', name: 'Product 8', price: '$25' },
+        { img: 'https://via.placeholder.com/150', name: 'Product 9', price: '$25' },
+        // Add 7 more small deals here
+    ]
+};
+
+function loadDeals() {
+    const largeDealsSection = document.querySelector('.deals-large-grid');
+    const smallDealsSection = document.querySelector('.deals-small-grid');
+
+    // Load large deals
+    dealsData.large.forEach(deal => {
+        const dealDiv = document.createElement('div');
+        dealDiv.className = 'deal-box large';
+        dealDiv.innerHTML = `<img src="${deal.img}" alt="${deal.name}"><h3>${deal.name}</h3><p>Price: ${deal.price}</p>`;
+        largeDealsSection.appendChild(dealDiv);
+    });
+
+    // Load small deals
+    dealsData.small.forEach(deal => {
+        const dealDiv = document.createElement('div');
+        dealDiv.className = 'deal-box small';
+        dealDiv.innerHTML = `<img src="${deal.img}" alt="${deal.name}"><h3>${deal.name}</h3><p>Price: ${deal.price}</p>`;
+        smallDealsSection.appendChild(dealDiv);
+    });
+}
+
+// Call the function to load deals when the page loads
+document.addEventListener('DOMContentLoaded', loadDeals);
