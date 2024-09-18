@@ -124,9 +124,9 @@ const dealsData = {
         { img: 'https://via.placeholder.com/400x200', name: 'Deal 2', price: '$120' }
     ],
     small: [
-        { img: 'https://via.placeholder.com/150', name: 'Product 1', price: '$25' },
-        { img: 'https://via.placeholder.com/150', name: 'Product 2', price: '$25' },
-        { img: 'https://via.placeholder.com/150', name: 'Product 3', price: '$20' },
+        { img: 'white_trainer.png', name: 'Exclusive White Trainers', price: '£55' },
+        { img: 'shirt_fea.png', name: 'M Style Shirt', price: '£65' },
+        { img: 'jurassic_shirt_fea.png', name: 'Jurassic Park Shirt Kids', price: '£20' },
         { img: 'https://via.placeholder.com/150', name: 'Product 4', price: '$25' },
         { img: 'https://via.placeholder.com/150', name: 'Product 5', price: '$25' },
         { img: 'https://via.placeholder.com/150', name: 'Product 6', price: '$25' },
