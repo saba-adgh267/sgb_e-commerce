@@ -124,16 +124,18 @@ const dealsData = {
         { img: 'https://via.placeholder.com/400x200', name: 'Deal 2', price: '$120' }
     ],
     small: [
-        { img: 'white_trainer.png', name: 'Exclusive White Trainers', price: '£55' },
-        { img: 'shirt_fea.png', name: 'M Style Shirt', price: '£65' },
-        { img: 'jurassic_shirt_fea.png', name: 'Jurassic Park Shirt Kids', price: '£20' },
-        { img: 'https://via.placeholder.com/150', name: 'Product 4', price: '$25' },
-        { img: 'https://via.placeholder.com/150', name: 'Product 5', price: '$25' },
-        { img: 'https://via.placeholder.com/150', name: 'Product 6', price: '$25' },
-        { img: 'https://via.placeholder.com/150', name: 'Product 7', price: '$25' },
-        { img: 'https://via.placeholder.com/150', name: 'Product 8', price: '$25' },
-        { img: 'https://via.placeholder.com/150', name: 'Product 9', price: '$25' },
-        // Add 7 more small deals here
+        { img: 'fea_white_trainer.png', name: 'Exclusive White Trainers', price: '£54.99' },
+        { img: 'fea_shirt.png', name: 'M Style Shirt', price: '£64.99' },
+        { img: 'fea_jurassic_shirt.png', name: 'Jurassic Park Shirt Kids', price: '£19.99' },
+        { img: 'fea_longcoat_brown.png', name: 'Long Coat - Brown', price: '£125.99' },
+        { img: 'fea_blazer_men.png', name: "Men's Plaid Blazer", price: '£29.99' },
+        { img: 'fea_baggy_jeans.png', name: 'Baggy Jeans', price: '£34.99' },
+        { img: 'fea_scarf_green.png', name: 'Super-soft Scarf', price: '£14.99' },
+        { img: 'fea_scarf_embroided.png', name: 'Embroidered Paisley Scarf', price: '£34.99' },
+        { img: 'fea_jumper_kids.png', name: 'Blue Knitted Jumper - Kids', price: '£24.99' },
+        { img: 'fea_jumper_woman.png', name: "Woman's Sleeveless Jumper", price: '£29.99' },
+        { img: 'fea_jumper_xmas.png', name: 'Lowry Red/Navy Fair Jumper', price: '£25.99' },
+        { img: 'fea_cargo_trousers.png', name: 'Cargo Trousers (Orange)', price: '£38.99' },
     ]
 };
 
