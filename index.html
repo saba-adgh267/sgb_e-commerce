@@ -12,6 +12,14 @@
     <header>
         <h1>SGB Commerce</h1>
         <button class="hamburger" onclick="toggleSidebar()">&#9776;</button>
+        
+        <!-- Cart Icon -->
+        <div class="cart-icon" onclick="openCart()">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3 3H5L5.4 5M7 13H17L21 5H5.4M7 13L5.4 5M7 13L4.7 15.3C4.3 15.7 4.6 16.5 5.1 16.5H17M17 13V16.5M9 19.5C9.8 19.5 10.5 20.2 10.5 21S9.8 22.5 9 22.5 7.5 21.8 7.5 21 8.2 19.5 9 19.5ZM20 19.5C20.8 19.5 21.5 20.2 21.5 21S20.8 22.5 20 22.5 18.5 21.8 18.5 21 19.2 19.5 20 19.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span id="cart-count" class="cart-count">0</span>
+        </div>
     </header>
     
     <nav id="sidebar" class="sidebar">
@@ -26,11 +34,6 @@
     </nav>
 
     <main>
-        <h2 id="products-heading">Products:</h2>
-        <div id="products-section" class="products">
-            <!-- This section will be dynamically updated by JavaScript -->
-        </div>
-    
         <!-- Deals section (only visible on the home page) -->
         <div id="deals-section" class="deals-section">
             <h2 id="deals-heading">Deals:</h2>
@@ -39,6 +42,11 @@
     
             <div class="deals-small-grid">
             </div>
+        </div>
+
+        <h2 id="products-heading">Products:</h2>
+        <div id="products-section" class="products">
+            <!-- This section will be dynamically updated by JavaScript -->
         </div>
     </main>
     
@@ -58,4 +66,3 @@
     </footer>
 </body>
 </html>
-

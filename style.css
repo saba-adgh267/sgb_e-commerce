@@ -14,6 +14,49 @@ header {
     text-align: center;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Cart Icon Styles */
+.cart-icon {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #333;
+    color: white;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    transition: all 0.3s ease;
+}
+
+.cart-icon:hover {
+    background-color: #555;
+    transform: translateY(-50%) scale(1.05);
+}
+
+.cart-count {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: #ff4444;
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 600;
+    min-width: 20px;
 }
 
 .hamburger {
@@ -84,21 +127,21 @@ main {
 /* Products Section */
 .products {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 columns */
-    gap: 10px; /* Reduced gap */
-    margin: 0 auto 40px auto; /* Centered with automatic left and right margins */
-    max-width: 1200px; /* Limiting the maximum width to ensure centering */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin: 0 auto 40px auto;
+    max-width: 1200px;
 }
 
 .product {
     border: 1px solid #ddd;
-    padding: 10px; /* Adjusted padding */
+    padding: 10px;
     background-color: #fff;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     text-align: center;
     transition: transform 0.3s ease;
-    box-sizing: border-box; /* Ensure padding and border are included in width and height */
-    position: relative; /* Needed for the absolute positioning of the image */
+    box-sizing: border-box;
+    position: relative;
 }
 
 .product:hover {
@@ -109,27 +152,68 @@ main {
     display: block;
     width: 100%;
     height: 0;
-    padding-bottom: 100%; /* Creates a square aspect ratio */
-    object-fit: cover; /* Ensures the image covers the area */
+    padding-bottom: 100%;
+    object-fit: cover;
+}
+
+/* Add to Cart Button */
+.add-to-cart-btn {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 10px;
+    width: 100%;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.add-to-cart-btn:hover {
+    background-color: #555;
+    transform: translateY(-2px);
+}
+
+.add-to-cart-btn:active {
+    transform: translateY(0);
+}
+
+.add-to-cart-btn.added {
+    background-color: #28a745;
+    animation: addedToCart 0.3s ease;
+}
+
+@keyframes addedToCart {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
 }
 
 /* Deals Section */
 .deals-large-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Two large boxes side by side */
-    gap: 10px; /* Reduced gap */
-    margin: 0 auto 20px auto; /* Centered with automatic left and right margins */
-    max-width: 1200px; /* Limiting the maximum width to ensure centering */
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin: 0 auto 20px auto;
+    max-width: 1200px;
 }
 
 .deal-box.large {
     border: 1px solid #ddd;
-    padding: 10px; /* Adjusted padding */
+    padding: 10px;
     background-color: #fff;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
     text-align: center;
-    box-sizing: border-box; /* Ensure padding and border are included in width and height */
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
 }
 
 .deal-box.large:hover {
@@ -137,76 +221,113 @@ main {
 }
 
 .deal-box.large img {
-    max-height: 250px; /* Adjusted to be longer */
+    max-height: 200px;
     width: 100%;
     height: auto;
-    object-fit: cover; /* Ensures the image covers the area */
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.deal-box.large h3 {
+    margin: 10px 0 5px 0;
+    flex-grow: 1;
+}
+
+.deal-box.large p {
+    margin: 5px 0 10px 0;
+}
+
+.deal-box.large .add-to-cart-btn {
+    margin-top: auto;
 }
 
 .deals-small-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 columns */
-    gap: 10px; /* Reduced gap */
-    margin: 0 auto; /* Centered with automatic left and right margins */
-    max-width: 1200px; /* Limiting the maximum width to ensure centering */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin: 0 auto;
+    max-width: 1200px;
 }
 
 .deal-box.small {
-    width: auto;
-    height: auto;
     border: 1px solid #ddd;
-    padding: 10px; /* Adjusted padding */
+    padding: 10px;
     background-color: #fff;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
     text-align: center;
-    height: auto; /* Adjusted height to auto */
-    box-sizing: border-box; /* Ensure padding and border are included in width and height */
-    position: relative; /* Needed for the absolute positioning of the image */
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    min-height: 250px;
 }
 
 .deal-box.small img {
-    width: 72%; /* Makes the image take up the full width of its container */
-    height: 72%; /* Adjusts the height automatically to maintain aspect ratio */
-    object-fit: contain; /* Ensures the image is fully visible without cropping */
-     /* Grey background color as fallback */
+    width: 72%;
+    height: 120px;
+    object-fit: contain;
+    margin: 0 auto;
+    flex-shrink: 0;
 }
 
 .deal-box.small:hover {
     transform: translateY(-5px);
 }
 
-
 .deal-box.small h3 {
-    margin: 8px 0; /* Reduced margin */
+    margin: 8px 0 5px 0;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    line-height: 1.2;
 }
 
 .deal-box.small p {
     color: #777;
+    margin: 5px 0 10px 0;
+}
+
+.deal-box.small .add-to-cart-btn {
+    margin-top: auto;
+    font-size: 12px;
+    padding: 8px 12px;
 }
 
 /* Responsive Adjustments */
 @media (max-width: 768px) {
     .products {
-        grid-template-columns: repeat(2, 1fr); /* 2 columns on smaller screens */
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .deals-large-grid {
-        grid-template-columns: 1fr; /* Stacks the large deal boxes */
+        grid-template-columns: 1fr;
     }
 
     .deals-small-grid {
-        grid-template-columns: 1fr 1fr; /* Two columns for smaller deals */
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .cart-icon {
+        right: 10px;
+        width: 45px;
+        height: 45px;
     }
 }
 
 @media (max-width: 480px) {
     .products {
-        grid-template-columns: 1fr; /* 1 column on very small screens */
+        grid-template-columns: 1fr;
     }
 
     .deals-small-grid {
-        grid-template-columns: 1fr; /* One column for smaller deals */
+        grid-template-columns: 1fr;
+    }
+
+    .cart-icon {
+        width: 40px;
+        height: 40px;
     }
 }
 

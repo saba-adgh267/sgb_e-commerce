@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart - SGB Commerce</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="cart.css">
+    <script src="app.js"></script>
+    <script src="cart.js"></script>
+</head>
+<body>
+    <header>
+        <h1>SGB Commerce</h1>
+        <button class="hamburger" onclick="toggleSidebar()">&#9776;</button>
+        
+        <!-- Cart Icon -->
+        <div class="cart-icon" onclick="openCart()">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3 3H5L5.4 5M7 13H17L21 5H5.4M7 13L5.4 5M7 13L4.7 15.3C4.3 15.7 4.6 16.5 5.1 16.5H17M17 13V16.5M9 19.5C9.8 19.5 10.5 20.2 10.5 21S9.8 22.5 9 22.5 7.5 21.8 7.5 21 8.2 19.5 9 19.5ZM20 19.5C20.8 19.5 21.5 20.2 21.5 21S20.8 22.5 20 22.5 18.5 21.8 18.5 21 19.2 19.5 20 19.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span id="cart-count" class="cart-count">0</span>
+        </div>
+    </header>
+    
+    <nav id="sidebar" class="sidebar">
+        <button class="closebtn" onclick="closeSidebar()">&times;</button>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html" onclick="showProducts('casual')">Casual Wear</a></li>
+            <li><a href="index.html" onclick="showProducts('shoes')">Shoes</a></li>
+            <li><a href="index.html" onclick="showProducts('sports')">Sportswear</a></li>
+            <li><a href="index.html" onclick="showProducts('winter')">Winter Collection</a></li>
+        </ul>
+    </nav>
+
+    <main class="cart-main">
+        <div class="cart-container">
+            <div class="cart-header">
+                <h1>Shopping Cart</h1>
+                <a href="index.html" class="continue-shopping">← Continue Shopping</a>
+            </div>
+
+            <div class="cart-content">
+                <div class="cart-items-section">
+                    <div id="cart-items" class="cart-items">
+                        <!-- Cart items will be populated by JavaScript -->
+                    </div>
+                    
+                    <div id="empty-cart-message" class="empty-cart" style="display: none;">
+                        <div class="empty-cart-icon">🛒</div>
+                        <h2>Your cart is empty</h2>
+                        <p>Add some items to get started!</p>
+                        <a href="index.html" class="shop-now-btn">Shop Now</a>
+                    </div>
+                </div>
+
+                <div class="cart-summary">
+                    <div class="summary-card">
+                        <h3>Order Summary</h3>
+                        
+                        <div class="summary-row">
+                            <span>Subtotal (<span id="item-count">0</span> items)</span>
+                            <span id="subtotal">£0.00</span>
+                        </div>
+                        
+                        <div class="promotions-section">
+                            <h4>Available Promotions</h4>
+                            <div id="promotions-list">
+                                <!-- Promotions will be populated by JavaScript -->
+                            </div>
+                        </div>
+                        
+                        <div class="summary-row discount-row" id="discount-row" style="display: none;">
+                            <span id="discount-text">Discount</span>
+                            <span id="discount-amount">-£0.00</span>
+                        </div>
+                        
+                        <div class="summary-row shipping-row">
+                            <span>Shipping</span>
+                            <span id="shipping-cost">FREE</span>
+                        </div>
+                        
+                        <hr>
+                        
+                        <div class="summary-row total-row">
+                            <span><strong>Total</strong></span>
+                            <span id="total-amount"><strong>£0.00</strong></span>
+                        </div>
+                        
+                        <button class="checkout-btn" id="checkout-btn" disabled>
+                            Proceed to Checkout
+                        </button>
+                        
+                        <div class="security-info">
+                            <span>🔒 Secure checkout guaranteed</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>SGB Commerce</h3>
+            </div>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Return Policy</a>
+                <a href="#">Contact Us</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
