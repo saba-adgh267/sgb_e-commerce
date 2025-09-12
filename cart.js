@@ -44,10 +44,13 @@ const availablePromotions = [
 let appliedPromotions = [];
 
 function loadCartItems() {
+    // Ensure we have the latest cart data from global storage
+    loadCartFromStorage();
+    
     const cartItemsContainer = document.getElementById('cart-items');
     const emptyCartMessage = document.getElementById('empty-cart-message');
     
-    if (cart.length === 0) {
+    if (!cart || cart.length === 0) {
         cartItemsContainer.style.display = 'none';
         emptyCartMessage.style.display = 'block';
         updateCartSummary();
@@ -94,6 +97,9 @@ function updateCartSummary() {
     document.getElementById('item-count').textContent = itemCount;
     document.getElementById('subtotal').textContent = `£${subtotal.toFixed(2)}`;
     
+    // Update cart items list in summary
+    updateCartSummaryItems();
+    
     // Calculate discounts
     let totalDiscount = 0;
     appliedPromotions.forEach(promotion => {
@@ -126,6 +132,48 @@ function updateCartSummary() {
     } else {
         checkoutBtn.disabled = true;
         checkoutBtn.textContent = 'Proceed to Checkout';
+    }
+}
+
+function updateCartSummaryItems() {
+    const summaryCard = document.querySelector('.summary-card');
+    
+    // Remove existing cart summary items if any
+    const existingSummaryItems = summaryCard.querySelector('.cart-summary-items');
+    if (existingSummaryItems) {
+        existingSummaryItems.remove();
+    }
+    
+    if (cart.length > 0) {
+        const summaryItemsDiv = document.createElement('div');
+        summaryItemsDiv.className = 'cart-summary-items';
+        
+        cart.forEach(item => {
+            const summaryItemDiv = document.createElement('div');
+            summaryItemDiv.className = 'summary-item';
+            
+            summaryItemDiv.innerHTML = `
+                <img src="${item.img}" alt="${item.name}" class="summary-item-image">
+                <div class="summary-item-details">
+                    <p class="summary-item-name">${item.name}</p>
+                    <p class="summary-item-price">${item.price} each</p>
+                </div>
+                <div class="summary-item-qty">×${item.quantity}</div>
+            `;
+            
+            summaryItemsDiv.appendChild(summaryItemDiv);
+        });
+        
+        // Insert after the subtotal row
+        const subtotalRow = Array.from(summaryCard.children).find(child => 
+            child.classList.contains('summary-row') && child.textContent.includes('Subtotal')
+        );
+        
+        if (subtotalRow && subtotalRow.nextSibling) {
+            summaryCard.insertBefore(summaryItemsDiv, subtotalRow.nextSibling);
+        } else if (subtotalRow) {
+            subtotalRow.parentNode.insertBefore(summaryItemsDiv, subtotalRow.nextSibling);
+        }
     }
 }
 
@@ -239,6 +287,8 @@ function updateDiscountText() {
 // Initialize cart page when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     if (window.location.pathname.includes('cart.html')) {
+        // Load cart from storage first
+        loadCartFromStorage();
         loadCartItems();
         updateCartCount();
         

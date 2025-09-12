@@ -1,6 +1,6 @@
 const productsData = {
     casual: [
-        { id: 'c1', img: 'https://via.placeholder.com/200', name: 'Casual Product 1', price: '£30.00', originalPrice: 30.00 },
+        { id: 'c1', img: 'cas_blue_shirt.png', name: 'Mads Casual Shirt - Blue' , price: '£30.00', originalPrice: 30.00 },
         { id: 'c2', img: 'https://via.placeholder.com/200', name: 'Casual Product 2', price: '£45.00', originalPrice: 45.00 },
         { id: 'c3', img: 'https://via.placeholder.com/200', name: 'Casual Product 3', price: '£35.00', originalPrice: 35.00 },
         { id: 'c4', img: 'https://via.placeholder.com/200', name: 'Casual Product 4', price: '£42.00', originalPrice: 42.00 },
@@ -33,8 +33,30 @@ const productsData = {
     ],
 };
 
-// Shopping Cart functionality
+// Shopping Cart functionality with persistent storage
 let cart = [];
+
+// Initialize cart storage if it doesn't exist
+if (!window.cartStorage) {
+    window.cartStorage = [];
+}
+
+// Load cart from memory storage on page load
+function loadCartFromStorage() {
+    try {
+        cart = window.cartStorage || [];
+        if (!Array.isArray(cart)) {
+            cart = [];
+        }
+    } catch (e) {
+        cart = [];
+    }
+}
+
+// Save cart to memory storage
+function saveCartToStorage() {
+    window.cartStorage = [...cart];
+}
 
 // Cart management functions
 function addToCart(productId, productName, productPrice, productImg) {
@@ -53,15 +75,21 @@ function addToCart(productId, productName, productPrice, productImg) {
         });
     }
     
+    saveCartToStorage();
     updateCartCount();
     showAddToCartFeedback();
 }
 
 function removeFromCart(productId) {
     cart = cart.filter(item => item.id !== productId);
+    saveCartToStorage();
     updateCartCount();
+    
+    // If we're on the cart page, reload the cart items
     if (window.location.pathname.includes('cart.html')) {
-        loadCartItems();
+        if (typeof loadCartItems === 'function') {
+            loadCartItems();
+        }
     }
 }
 
@@ -72,9 +100,14 @@ function updateQuantity(productId, newQuantity) {
             removeFromCart(productId);
         } else {
             item.quantity = newQuantity;
+            saveCartToStorage();
             updateCartCount();
+            
+            // If we're on the cart page, reload the cart items
             if (window.location.pathname.includes('cart.html')) {
-                loadCartItems();
+                if (typeof loadCartItems === 'function') {
+                    loadCartItems();
+                }
             }
         }
     }
@@ -108,20 +141,28 @@ function showProducts(category) {
     const productsSection = document.getElementById('products-section');
     const heading = document.getElementById('products-heading');
     const dealsSection = document.getElementById('deals-section');
+    const featuredSection = document.getElementById('featured-section');
+    
+    if (!productsSection) return;
+    
     productsSection.innerHTML = '';
 
     const products = productsData[category] || [];
 
     if (category === 'default') {
-        heading.innerText = 'Featured Products:';
+        // Hide the products heading and section on home page
+        if (heading) heading.style.display = 'none';
         if (dealsSection) dealsSection.style.display = 'block';
-        
-        // For home page, don't show any products in the products section
-        // Only show deals section at the top
+        if (featuredSection) featuredSection.style.display = 'block';
         productsSection.style.display = 'none';
     } else {
-        heading.innerText = `${category.charAt(0).toUpperCase() + category.slice(1)} Products:`;
+        // Show products heading and section for specific categories
+        if (heading) {
+            heading.style.display = 'block';
+            heading.innerText = `${category.charAt(0).toUpperCase() + category.slice(1)} Products:`;
+        }
         if (dealsSection) dealsSection.style.display = 'none';
+        if (featuredSection) featuredSection.style.display = 'none';
         productsSection.style.display = 'grid';
         
         products.forEach(product => {
@@ -148,6 +189,7 @@ function createProductElement(product, container) {
 
 // Show default products when the page loads
 document.addEventListener('DOMContentLoaded', () => {
+    loadCartFromStorage();
     showProducts('default');
     updateCartCount();
     loadDeals();
@@ -211,21 +253,21 @@ function createDealElement(deal, container, className) {
 
 function loadDeals() {
     const largeDealsSection = document.querySelector('.deals-large-grid');
-    const smallDealsSection = document.querySelector('.deals-small-grid');
+    const featuredProductsSection = document.querySelector('.featured-small-grid');
 
-    if (largeDealsSection && smallDealsSection) {
+    if (largeDealsSection && featuredProductsSection) {
         // Clear existing content
         largeDealsSection.innerHTML = '';
-        smallDealsSection.innerHTML = '';
+        featuredProductsSection.innerHTML = '';
         
         // Load large deals
         dealsData.large.forEach(deal => {
             createDealElement(deal, largeDealsSection, 'large');
         });
 
-        // Load small deals
+        // Load featured products (small deals)
         dealsData.small.forEach(deal => {
-            createDealElement(deal, smallDealsSection, 'small');
+            createDealElement(deal, featuredProductsSection, 'small');
         });
     }
 }

@@ -58,9 +58,9 @@
 
 .cart-item {
     display: grid;
-    grid-template-columns: 100px 1fr auto auto auto;
-    gap: 20px;
-    padding: 20px;
+    grid-template-columns: 60px 1fr auto auto auto;
+    gap: 15px;
+    padding: 15px 20px;
     border-bottom: 1px solid #eee;
     align-items: center;
     transition: background-color 0.3s ease;
@@ -75,42 +75,44 @@
 }
 
 .item-image {
-    width: 80px;
-    height: 80px;
+    width: 50px;
+    height: 50px;
     object-fit: cover;
-    border-radius: 8px;
+    border-radius: 6px;
     border: 1px solid #ddd;
 }
 
 .item-details h3 {
-    margin: 0 0 5px 0;
-    font-size: 1.1rem;
+    margin: 0 0 3px 0;
+    font-size: 0.95rem;
     color: #333;
+    line-height: 1.2;
 }
 
 .item-details p {
     margin: 0;
     color: #666;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
 }
 
 .quantity-controls {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
     border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 5px;
+    border-radius: 4px;
+    padding: 4px;
 }
 
 .quantity-btn {
     background: none;
     border: none;
-    font-size: 18px;
+    font-size: 16px;
     cursor: pointer;
-    padding: 5px 10px;
+    padding: 4px 8px;
     color: #333;
     transition: background-color 0.3s ease;
+    min-width: 25px;
 }
 
 .quantity-btn:hover {
@@ -118,27 +120,29 @@
 }
 
 .quantity-input {
-    width: 50px;
+    width: 40px;
     text-align: center;
     border: none;
     font-weight: 600;
-    font-size: 16px;
+    font-size: 14px;
 }
 
 .item-price {
     font-weight: 600;
-    font-size: 1.1rem;
+    font-size: 0.95rem;
     color: #333;
+    min-width: 60px;
+    text-align: right;
 }
 
 .remove-btn {
     background-color: #dc3545;
     color: white;
     border: none;
-    padding: 8px 12px;
-    border-radius: 5px;
+    padding: 6px 10px;
+    border-radius: 4px;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 12px;
     transition: all 0.3s ease;
 }
 
@@ -194,7 +198,7 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     padding: 30px;
     position: sticky;
-    top: 20px;
+    top: 90px; /* Account for fixed header */
 }
 
 .summary-card h3 {
@@ -226,6 +230,64 @@
     margin-top: 20px;
     padding-top: 20px;
     border-top: 2px solid #eee;
+}
+
+/* Cart Items List in Summary */
+.cart-summary-items {
+    margin: 20px 0;
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.summary-item {
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    border-bottom: 1px solid #eee;
+    gap: 10px;
+}
+
+.summary-item:last-child {
+    border-bottom: none;
+}
+
+.summary-item-image {
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+}
+
+.summary-item-details {
+    flex: 1;
+    min-width: 0;
+}
+
+.summary-item-name {
+    font-size: 0.8rem;
+    color: #333;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.summary-item-price {
+    font-size: 0.75rem;
+    color: #666;
+    margin: 2px 0 0 0;
+}
+
+.summary-item-qty {
+    font-size: 0.8rem;
+    color: #333;
+    font-weight: 600;
+    min-width: 30px;
+    text-align: right;
 }
 
 /* Promotions Section */
@@ -337,8 +399,8 @@
     }
     
     .cart-item {
-        grid-template-columns: 80px 1fr;
-        gap: 15px;
+        grid-template-columns: 50px 1fr;
+        gap: 10px;
     }
     
     .cart-item .quantity-controls,
@@ -346,7 +408,7 @@
     .cart-item .remove-btn {
         grid-column: 2;
         justify-self: start;
-        margin-top: 10px;
+        margin-top: 8px;
     }
     
     .summary-card {
@@ -360,13 +422,18 @@
     }
     
     .cart-item {
-        grid-template-columns: 60px 1fr;
-        gap: 10px;
-        padding: 15px;
+        grid-template-columns: 45px 1fr;
+        gap: 8px;
+        padding: 12px 15px;
     }
     
     .item-image {
-        width: 60px;
-        height: 60px;
+        width: 40px;
+        height: 40px;
+    }
+    
+    .summary-item-image {
+        width: 25px;
+        height: 25px;
     }
 }

@@ -21,10 +21,9 @@ header {
 
 /* Cart Icon Styles */
 .cart-icon {
-    position: absolute;
+    position: fixed;
     right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
+    top: 10px;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -35,11 +34,13 @@ header {
     width: 50px;
     height: 50px;
     transition: all 0.3s ease;
+    z-index: 1001;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .cart-icon:hover {
     background-color: #555;
-    transform: translateY(-50%) scale(1.05);
+    transform: scale(1.05);
 }
 
 .cart-count {
@@ -57,6 +58,13 @@ header {
     font-size: 12px;
     font-weight: 600;
     min-width: 20px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
 }
 
 .hamburger {
@@ -119,7 +127,7 @@ main {
     transition: margin-left 0.3s;
 }
 
-#products-heading, #deals-heading {
+#products-heading, #deals-heading, #featured-heading {
     font-size: 24px;
     margin-bottom: 20px;
 }
@@ -150,10 +158,10 @@ main {
 
 .product img {
     display: block;
-    width: 100%;
-    height: 0;
-    padding-bottom: 100%;
-    object-fit: cover;
+    width: 72%;
+    height: 130px;
+    object-fit: contain;
+    margin: 0 auto;
 }
 
 /* Add to Cart Button */
@@ -196,6 +204,10 @@ main {
 }
 
 /* Deals Section */
+.deals-section {
+    margin-bottom: 40px;
+}
+
 .deals-large-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -241,7 +253,12 @@ main {
     margin-top: auto;
 }
 
-.deals-small-grid {
+/* Featured Section */
+.featured-section {
+    margin-bottom: 40px;
+}
+
+.featured-small-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 10px;
@@ -305,7 +322,7 @@ main {
         grid-template-columns: 1fr;
     }
 
-    .deals-small-grid {
+    .featured-small-grid {
         grid-template-columns: 1fr 1fr;
     }
 
@@ -314,6 +331,10 @@ main {
         width: 45px;
         height: 45px;
     }
+    
+    header.shifted {
+        left: 250px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -321,7 +342,7 @@ main {
         grid-template-columns: 1fr;
     }
 
-    .deals-small-grid {
+    .featured-small-grid {
         grid-template-columns: 1fr;
     }
 
