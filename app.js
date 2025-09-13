@@ -1,11 +1,11 @@
 const productsData = {
     casual: [
-        { id: 'c1', img: 'cas_blue_shirt.png', name: 'Mads Casual Shirt - Blue' , price: '£30.00', originalPrice: 30.00 },
-        { id: 'c2', img: 'https://via.placeholder.com/200', name: 'Casual Product 2', price: '£45.00', originalPrice: 45.00 },
-        { id: 'c3', img: 'https://via.placeholder.com/200', name: 'Casual Product 3', price: '£35.00', originalPrice: 35.00 },
-        { id: 'c4', img: 'https://via.placeholder.com/200', name: 'Casual Product 4', price: '£42.00', originalPrice: 42.00 },
-        { id: 'c5', img: 'https://via.placeholder.com/200', name: 'Casual Product 5', price: '£38.00', originalPrice: 38.00 },
-        { id: 'c6', img: 'https://via.placeholder.com/200', name: 'Casual Product 6', price: '£55.00', originalPrice: 55.00 },
+        { id: 'c1', img: 'cas_blue_shirt.png', name: 'Mads Casual Shirt - Navy Blue' , price: '£30.00', originalPrice: 30.00 },
+        { id: 'c2', img: 'cas_grey_shirt.png', name: 'Fabrilife Premium Shirt - Grey', price: '£45.00', originalPrice: 45.00 },
+        { id: 'c3', img: 'cas_blue_trousers.png', name: 'Ladies Navy Jersey Trousers', price: '£35.00', originalPrice: 28.00 },
+        { id: 'c4', img: 'cas_grey_trousers.png', name: 'Womens Silver Grey Trousers', price: '£30.00', originalPrice: 42.00 },
+        { id: 'c5', img: 'cas_blazer_blue.png', name: 'Casual Blazer - Blue', price: '£38.00', originalPrice: 38.00 },
+        { id: 'c6', img: 'cas_blazer_brown.png', name: 'Casual Blazer - Brown', price: '£55.00', originalPrice: 55.00 },
     ],
     shoes: [
         { id: 's1', img: 'https://via.placeholder.com/200', name: 'Shoe Product 1', price: '£60.00', originalPrice: 60.00 },
