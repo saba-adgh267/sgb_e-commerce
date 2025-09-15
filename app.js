@@ -1,120 +1,118 @@
+// Product data
 const productsData = {
     casual: [
-        { id: 'c1', img: 'cas_blue_shirt.png', name: 'Mads Casual Shirt - Navy Blue' , price: '£30.00', originalPrice: 30.00 },
-        { id: 'c2', img: 'cas_grey_shirt.png', name: 'Fabrilife Premium Shirt - Grey', price: '£45.00', originalPrice: 45.00 },
-        { id: 'c3', img: 'cas_blue_trousers.png', name: 'Ladies Navy Jersey Trousers', price: '£35.00', originalPrice: 28.00 },
-        { id: 'c4', img: 'cas_grey_trousers.png', name: 'Womens Silver Grey Trousers', price: '£30.00', originalPrice: 42.00 },
-        { id: 'c5', img: 'cas_blazer_blue.png', name: 'Casual Blazer - Blue', price: '£38.00', originalPrice: 38.00 },
-        { id: 'c6', img: 'cas_blazer_brown.png', name: 'Casual Blazer - Brown', price: '£55.00', originalPrice: 55.00 },
+        { id: 'c1', img: 'cas_blue_shirt.png', name: 'Mads Casual Shirt - Navy Blue', price: '£29.99', originalPrice: 29.99 },
+        { id: 'c2', img: 'cas_grey_shirt.png', name: 'Fabrilife Premium Shirt - Grey', price: '£44.99', originalPrice: 44.99 },
+        { id: 'c3', img: 'cas_blue_trousers.png', name: 'Ladies Navy Jersey Trousers', price: '£34.99', originalPrice: 34.99 },
+        { id: 'c4', img: 'cas_grey_trousers.png', name: 'Womens Silver Grey Trousers', price: '£29.99', originalPrice: 29.99 },
+        { id: 'c5', img: 'cas_blazer_blue.png', name: 'Casual Blazer - Blue', price: '£37.99', originalPrice: 37.99 },
+        { id: 'c6', img: 'cas_blazer_brown.png', name: 'Casual Blazer - Brown', price: '£54.99', originalPrice: 54.99 },
     ],
     shoes: [
-        { id: 's1', img: 'https://via.placeholder.com/200', name: 'Shoe Product 1', price: '£60.00', originalPrice: 60.00 },
-        { id: 's2', img: 'https://via.placeholder.com/200', name: 'Shoe Product 2', price: '£75.00', originalPrice: 75.00 },
-        { id: 's3', img: 'https://via.placeholder.com/200', name: 'Shoe Product 3', price: '£85.00', originalPrice: 85.00 },
-        { id: 's4', img: 'https://via.placeholder.com/200', name: 'Shoe Product 4', price: '£95.00', originalPrice: 95.00 },
-        { id: 's5', img: 'https://via.placeholder.com/200', name: 'Shoe Product 5', price: '£70.00', originalPrice: 70.00 },
-        { id: 's6', img: 'https://via.placeholder.com/200', name: 'Shoe Product 6', price: '£65.00', originalPrice: 65.00 },
+        { id: 's1', img: 'sho_brown_shoes.png', name: 'Teviot Leather Shoes', price: '£19.99', originalPrice: 19.99 },
+        { id: 's2', img: 'sho_black_shoes.png', name: 'Cambridge Black Derby Shoes', price: '£79.95', originalPrice: 79.95 },
+        { id: 's3', img: 'sho_blue_shoes.png', name: 'Lastres Navy Gents Shoes', price: '£84.99', originalPrice: 84.99 },
+        { id: 's4', img: 'sho_ladies_black.png', name: 'Dublin Wychwood Arena Shoes', price: '£38.99', originalPrice: 38.99 },
+        { id: 's5', img: 'sho_ladies_brown.png', name: 'Grand Step Demi-Winter Boots', price: '£39.99', originalPrice: 39.99 },
+        { id: 's6', img: 'sho_white_trainers.png', name: 'LYCLUS Cloud Shoes', price: '£56.99', originalPrice: 56.99 },
     ],
     sports: [
-        { id: 'sp1', img: 'https://via.placeholder.com/200', name: 'Sports Product 1', price: '£40.00', originalPrice: 40.00 },
-        { id: 'sp2', img: 'https://via.placeholder.com/200', name: 'Sports Product 2', price: '£50.00', originalPrice: 50.00 },
-        { id: 'sp3', img: 'https://via.placeholder.com/200', name: 'Sports Product 3', price: '£55.00', originalPrice: 55.00 },
-        { id: 'sp4', img: 'https://via.placeholder.com/200', name: 'Sports Product 4', price: '£45.00', originalPrice: 45.00 },
-        { id: 'sp5', img: 'https://via.placeholder.com/200', name: 'Sports Product 5', price: '£60.00', originalPrice: 60.00 },
-        { id: 'sp6', img: 'https://via.placeholder.com/200', name: 'Sports Product 6', price: '£35.00', originalPrice: 35.00 },
+        { id: 'sp1', img: 'spo_blue_orange_shirt.png', name: 'OLIK Orange/Blue Shirt', price: '£39.99', originalPrice: 39.99 },
+        { id: 'sp2', img: 'spo_red_running_shirt.png', name: 'Running Long Sleeve T-Shirt Red', price: '£21.99', originalPrice: 21.99 },
+        { id: 'sp3', img: 'spo_polo_shirt.png', name: 'Sports Polo Shirt', price: '£14.99', originalPrice: 14.99 },
+        { id: 'sp4', img: 'spo_men_trainers.png', name: 'Gents Lightweight Trainers', price: '£36.99', originalPrice: 36.99 },
+        { id: 'sp5', img: 'spo_women_trainers.png', name: 'Women Trainers', price: '£38.99', originalPrice: 38.99 },
+        { id: 'sp6', img: 'spo_duffle_bag.png', name: 'PHANTOM Sports Bag', price: '£79.90', originalPrice: 79.90 },
     ],
     winter: [
-        { id: 'w1', img: 'https://via.placeholder.com/200', name: 'Winter Product 1', price: '£80.00', originalPrice: 80.00 },
-        { id: 'w2', img: 'https://via.placeholder.com/200', name: 'Winter Product 2', price: '£90.00', originalPrice: 90.00 },
-        { id: 'w3', img: 'https://via.placeholder.com/200', name: 'Winter Product 3', price: '£75.00', originalPrice: 75.00 },
-        { id: 'w4', img: 'https://via.placeholder.com/200', name: 'Winter Product 4', price: '£95.00', originalPrice: 95.00 },
-        { id: 'w5', img: 'https://via.placeholder.com/200', name: 'Winter Product 5', price: '£85.00', originalPrice: 85.00 },
-        { id: 'w6', img: 'https://via.placeholder.com/200', name: 'Winter Product 6', price: '£100.00', originalPrice: 100.00 },
+        { id: 'w1', img: 'wincol_women_gloves.png', name: 'Cozy Winter Gloves', price: '£12.00', originalPrice: 12.00 },
+        { id: 'w2', img: 'wincol_earmuffs.png', name: 'Winter Ear Muffs', price: '£7.99', originalPrice: 7.99 },
+        { id: 'w3', img: 'wincol_blue_jacket.png', name: 'Winter Jacket - Blue', price: '£34.99', originalPrice: 34.99 },
+        { id: 'w4', img: 'wincol_red_jacket.png', name: 'Trespass Padded Jacket - Red', price: '£24.99', originalPrice: 24.99 },
+        { id: 'w5', img: 'wincol_brown_scarf.png', name: 'Taupe Ombré Oversixed Scarf', price: '£39.95', originalPrice: 39.95 },
+        { id: 'w6', img: 'wincol_socks.png', name: 'Wool Blend Winter Socks', price: '£9.99', originalPrice: 9.99 },
     ],
 };
 
-// Shopping Cart functionality with persistent storage
+const dealsData = {
+    large: [
+        { id: 'deal1', img: 'https://via.placeholder.com/400x200?text=Deal+1', name: 'Deal 1', price: '£100.00', originalPrice: 100.00 },
+        { id: 'deal2', img: 'https://via.placeholder.com/400x200?text=Deal+2', name: 'Deal 2', price: '£120.00', originalPrice: 120.00 }
+    ],
+    small: [
+        { id: 'fea1', img: 'fea_white_trainer.png', name: 'Exclusive White Trainers', price: '£54.99', originalPrice: 54.99 },
+        { id: 'fea2', img: 'fea_shirt.png', name: 'M Style Shirt', price: '£64.99', originalPrice: 64.99 },
+        { id: 'fea3', img: 'fea_jurassic_shirt.png', name: 'Jurassic Park Shirt Kids', price: '£19.99', originalPrice: 19.99 },
+        { id: 'fea4', img: 'fea_longcoat_brown.png', name: 'Long Coat - Brown', price: '£125.99', originalPrice: 125.99 },
+        { id: 'fea5', img: 'fea_blazer_men.png', name: "Men's Plaid Blazer", price: '£29.99', originalPrice: 29.99 },
+        { id: 'fea6', img: 'fea_baggy_jeans.png', name: 'Baggy Jeans', price: '£34.99', originalPrice: 34.99 },
+        { id: 'fea7', img: 'fea_scarf_green.png', name: 'Super-soft Scarf', price: '£14.99', originalPrice: 14.99 },
+        { id: 'fea8', img: 'fea_scarf_embroided.png', name: 'Embroidered Paisley Scarf', price: '£34.99', originalPrice: 34.99 },
+        { id: 'fea9', img: 'fea_jumper_kids.png', name: 'Blue Knitted Jumper - Kids', price: '£24.99', originalPrice: 24.99 },
+        { id: 'fea10', img: 'fea_jumper_woman.png', name: "Woman's Sleeveless Jumper", price: '£29.99', originalPrice: 29.99 },
+        { id: 'fea11', img: 'fea_jumper_xmas.png', name: 'Lowry Red/Navy Fair Jumper', price: '£25.99', originalPrice: 25.99 },
+        { id: 'fea12', img: 'fea_cargo_trousers.png', name: 'Cargo Trousers (Orange)', price: '£38.99', originalPrice: 38.99 },
+    ]
+};
+
+// Shopping Cart functionality
 let cart = [];
+let currentPage = 'home';
 
-// Initialize cart storage with a more robust approach
-function initializeCartStorage() {
-    if (!window.cartStorage) {
-        window.cartStorage = [];
-    }
-    if (!window.cartInitialized) {
-        window.cartInitialized = true;
-    }
+// Navigation functions
+function goToHome() {
+    currentPage = 'home';
+    document.getElementById('home-page').classList.add('active');
+    document.getElementById('cart-page').classList.remove('active');
 }
 
-// Load cart from memory storage on page load
-function loadCartFromStorage() {
-    try {
-        initializeCartStorage();
-        cart = Array.isArray(window.cartStorage) ? [...window.cartStorage] : [];
-        console.log('Cart loaded from storage:', cart);
-    } catch (e) {
-        console.error('Error loading cart from storage:', e);
-        cart = [];
-        initializeCartStorage();
+function openCart() {
+    currentPage = 'cart';
+    document.getElementById('home-page').classList.remove('active');
+    document.getElementById('cart-page').classList.add('active');
+    
+    // Load cart items when switching to cart view
+    if (typeof loadCartItems === 'function') {
+        loadCartItems();
     }
-}
-
-// Save cart to memory storage
-function saveCartToStorage() {
-    try {
-        initializeCartStorage();
-        window.cartStorage = [...cart];
-        console.log('Cart saved to storage:', window.cartStorage);
-    } catch (e) {
-        console.error('Error saving cart to storage:', e);
+    if (typeof updateCartSummary === 'function') {
+        updateCartSummary();
     }
 }
 
 // Cart management functions
 function addToCart(productId, productName, productPrice, productImg) {
-    // Ensure cart is loaded
-    if (!window.cartInitialized) {
-        loadCartFromStorage();
-    }
-    
     const existingItem = cart.find(item => item.id === productId);
     
     if (existingItem) {
         existingItem.quantity += 1;
-        console.log('Updated existing item quantity:', existingItem);
     } else {
-        const newItem = {
+        cart.push({
             id: productId,
             name: productName,
             price: productPrice,
             img: productImg,
             quantity: 1,
             originalPrice: parseFloat(productPrice.replace('£', ''))
-        };
-        cart.push(newItem);
-        console.log('Added new item to cart:', newItem);
+        });
     }
     
-    saveCartToStorage();
     updateCartCount();
     showAddToCartFeedback();
-    
-    console.log('Current cart:', cart);
 }
 
 function removeFromCart(productId) {
     cart = cart.filter(item => item.id !== productId);
-    saveCartToStorage();
     updateCartCount();
     
-    // If we're on the cart page, reload the cart items
-    if (window.location.pathname.includes('cart.html')) {
+    if (currentPage === 'cart') {
         if (typeof loadCartItems === 'function') {
             loadCartItems();
         }
+        if (typeof updateCartSummary === 'function') {
+            updateCartSummary();
+        }
     }
-    
-    console.log('Removed item from cart. Current cart:', cart);
 }
 
 function updateQuantity(productId, newQuantity) {
@@ -124,40 +122,36 @@ function updateQuantity(productId, newQuantity) {
             removeFromCart(productId);
         } else {
             item.quantity = newQuantity;
-            saveCartToStorage();
             updateCartCount();
             
-            // If we're on the cart page, reload the cart items
-            if (window.location.pathname.includes('cart.html')) {
+            if (currentPage === 'cart') {
                 if (typeof loadCartItems === 'function') {
                     loadCartItems();
+                }
+                if (typeof updateCartSummary === 'function') {
+                    updateCartSummary();
                 }
             }
         }
     }
-    
-    console.log('Updated quantity for item', productId, 'to', newQuantity);
 }
 
 function updateCartCount() {
     const cartCountElement = document.getElementById('cart-count');
-    if (!cartCountElement) return;
-    
     const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
     
-    cartCountElement.textContent = totalItems;
-    
-    // Add animation when count changes
-    cartCountElement.style.animation = 'none';
-    setTimeout(() => {
-        cartCountElement.style.animation = 'addedToCart 0.3s ease';
-    }, 10);
-    
-    console.log('Updated cart count:', totalItems);
+    if (cartCountElement) {
+        cartCountElement.textContent = totalItems;
+        
+        // Add animation when count changes
+        cartCountElement.style.animation = 'none';
+        setTimeout(() => {
+            cartCountElement.style.animation = 'addedToCart 0.3s ease';
+        }, 10);
+    }
 }
 
 function showAddToCartFeedback() {
-    // Enhanced feedback - could add a toast notification here
     const cartIcon = document.querySelector('.cart-icon');
     if (cartIcon) {
         cartIcon.style.transform = 'scale(1.1)';
@@ -165,15 +159,9 @@ function showAddToCartFeedback() {
             cartIcon.style.transform = 'scale(1)';
         }, 200);
     }
-    console.log('Item added to cart!');
 }
 
-function openCart() {
-    // Ensure cart is saved before navigating
-    saveCartToStorage();
-    window.location.href = 'cart.html';
-}
-
+// Product display functions
 function showProducts(category) {
     const productsSection = document.getElementById('products-section');
     const heading = document.getElementById('products-heading');
@@ -206,6 +194,8 @@ function showProducts(category) {
             createProductElement(product, productsSection);
         });
     }
+    
+    closeSidebar();
 }
 
 function createProductElement(product, container) {
@@ -223,55 +213,6 @@ function createProductElement(product, container) {
 
     container.appendChild(productDiv);
 }
-
-// Show default products when the page loads
-document.addEventListener('DOMContentLoaded', () => {
-    console.log('DOM loaded, initializing app...');
-    loadCartFromStorage();
-    showProducts('default');
-    updateCartCount();
-    loadDeals();
-});
-
-function toggleSidebar() {
-    const sidebar = document.getElementById('sidebar');
-    const main = document.querySelector('main');
-    if (sidebar.style.left === '0px') {
-        sidebar.style.left = '-250px';
-        main.classList.remove('shifted');
-    } else {
-        sidebar.style.left = '0px';
-        main.classList.add('shifted');
-    }
-}
-
-function closeSidebar() {
-    const sidebar = document.getElementById('sidebar');
-    const main = document.querySelector('main');
-    sidebar.style.left = '-250px';
-    main.classList.remove('shifted');
-}
-
-const dealsData = {
-    large: [
-        { id: 'deal1', img: 'https://via.placeholder.com/400x200', name: 'Deal 1', price: '£100.00', originalPrice: 100.00 },
-        { id: 'deal2', img: 'https://via.placeholder.com/400x200', name: 'Deal 2', price: '£120.00', originalPrice: 120.00 }
-    ],
-    small: [
-        { id: 'fea1', img: 'fea_white_trainer.png', name: 'Exclusive White Trainers', price: '£54.99', originalPrice: 54.99 },
-        { id: 'fea2', img: 'fea_shirt.png', name: 'M Style Shirt', price: '£64.99', originalPrice: 64.99 },
-        { id: 'fea3', img: 'fea_jurassic_shirt.png', name: 'Jurassic Park Shirt Kids', price: '£19.99', originalPrice: 19.99 },
-        { id: 'fea4', img: 'fea_longcoat_brown.png', name: 'Long Coat - Brown', price: '£125.99', originalPrice: 125.99 },
-        { id: 'fea5', img: 'fea_blazer_men.png', name: "Men's Plaid Blazer", price: '£29.99', originalPrice: 29.99 },
-        { id: 'fea6', img: 'fea_baggy_jeans.png', name: 'Baggy Jeans', price: '£34.99', originalPrice: 34.99 },
-        { id: 'fea7', img: 'fea_scarf_green.png', name: 'Super-soft Scarf', price: '£14.99', originalPrice: 14.99 },
-        { id: 'fea8', img: 'fea_scarf_embroided.png', name: 'Embroidered Paisley Scarf', price: '£34.99', originalPrice: 34.99 },
-        { id: 'fea9', img: 'fea_jumper_kids.png', name: 'Blue Knitted Jumper - Kids', price: '£24.99', originalPrice: 24.99 },
-        { id: 'fea10', img: 'fea_jumper_woman.png', name: "Woman's Sleeveless Jumper", price: '£29.99', originalPrice: 29.99 },
-        { id: 'fea11', img: 'fea_jumper_xmas.png', name: 'Lowry Red/Navy Fair Jumper', price: '£25.99', originalPrice: 25.99 },
-        { id: 'fea12', img: 'fea_cargo_trousers.png', name: 'Cargo Trousers (Orange)', price: '£38.99', originalPrice: 38.99 },
-    ]
-};
 
 function createDealElement(deal, container, className) {
     const dealDiv = document.createElement('div');
@@ -310,15 +251,29 @@ function loadDeals() {
     }
 }
 
-// Ensure cart is always available across pages
-window.addEventListener('beforeunload', () => {
-    saveCartToStorage();
-});
-
-// Handle page visibility changes to maintain cart state
-document.addEventListener('visibilitychange', () => {
-    if (document.visibilityState === 'visible') {
-        loadCartFromStorage();
-        updateCartCount();
+// Sidebar functions
+function toggleSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    const main = document.querySelector('main');
+    if (sidebar.style.left === '0px') {
+        sidebar.style.left = '-250px';
+        main.classList.remove('shifted');
+    } else {
+        sidebar.style.left = '0px';
+        main.classList.add('shifted');
     }
+}
+
+function closeSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    const main = document.querySelector('main');
+    sidebar.style.left = '-250px';
+    main.classList.remove('shifted');
+}
+
+// Initialize the page
+document.addEventListener('DOMContentLoaded', () => {
+    showProducts('default');
+    updateCartCount();
+    loadDeals();
 });

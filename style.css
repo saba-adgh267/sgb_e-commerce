@@ -105,6 +105,7 @@ header {
     color: white;
     text-decoration: none;
     display: block;
+    cursor: pointer;
 }
 
 .sidebar ul li a:hover {
@@ -125,11 +126,25 @@ header {
 main {
     padding: 20px;
     transition: margin-left 0.3s;
+    flex: 1;
+}
+
+main.shifted {
+    margin-left: 250px;
 }
 
 #products-heading, #deals-heading, #featured-heading {
     font-size: 24px;
     margin-bottom: 20px;
+}
+
+/* Page visibility */
+.page {
+    display: none;
+}
+
+.page.active {
+    display: block;
 }
 
 /* Products Section */
@@ -190,11 +205,6 @@ main {
 
 .add-to-cart-btn:active {
     transform: translateY(0);
-}
-
-.add-to-cart-btn.added {
-    background-color: #28a745;
-    animation: addedToCart 0.3s ease;
 }
 
 @keyframes addedToCart {
@@ -312,6 +322,33 @@ main {
     padding: 8px 12px;
 }
 
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-brand h3 {
+    margin: 0;
+}
+
+.footer-links a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
 /* Responsive Adjustments */
 @media (max-width: 768px) {
     .products {
@@ -350,35 +387,4 @@ main {
         width: 40px;
         height: 40px;
     }
-}
-
-footer {
-    background-color: #333;
-    color: #fff;
-    padding: 20px;
-    text-align: center;
-}
-
-.footer-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.footer-brand h3 {
-    margin: 0;
-}
-
-.footer-links a {
-    color: #fff;
-    text-decoration: none;
-    margin: 0 10px;
-}
-
-.footer-links a:hover {
-    text-decoration: underline;
-}
-
-main.shifted {
-    margin-left: 250px;
 }

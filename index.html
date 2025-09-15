@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SGB Commerce</title>
     <link rel="stylesheet" href="style.css">
-    <script src="app.js"></script>
+    <link rel="stylesheet" href="cart.css">
 </head>
 <body>
     <header>
@@ -25,35 +25,95 @@
     <nav id="sidebar" class="sidebar">
         <button class="closebtn" onclick="closeSidebar()">&times;</button>
         <ul>
-            <li><a href="#" onclick="showProducts('default')">Home</a></li>
-            <li><a href="#" onclick="showProducts('casual')">Casual Wear</a></li>
-            <li><a href="#" onclick="showProducts('shoes')">Shoes</a></li>
-            <li><a href="#" onclick="showProducts('sports')">Sportswear</a></li>
-            <li><a href="#" onclick="showProducts('winter')">Winter Collection</a></li>
+            <li><a onclick="showProducts('default')">Home</a></li>
+            <li><a onclick="showProducts('casual')">Casual Wear</a></li>
+            <li><a onclick="showProducts('shoes')">Shoes</a></li>
+            <li><a onclick="showProducts('sports')">Sportswear</a></li>
+            <li><a onclick="showProducts('winter')">Winter Collection</a></li>
         </ul>
     </nav>
 
-    <main>
-        <!-- Deals section (only visible on the home page) -->
-        <div id="deals-section" class="deals-section">
-            <h2 id="deals-heading">Deals:</h2>
-            <div class="deals-large-grid">
+    <!-- Main Products Page -->
+    <div id="home-page" class="page active">
+        <main>
+            <!-- Deals section -->
+            <div id="deals-section" class="deals-section">
+                <h2 id="deals-heading">Deals:</h2>
+                <div class="deals-large-grid">
+                </div>
             </div>
-        </div>
 
-        <!-- Featured Products section (only visible on the home page) -->
-        <div id="featured-section" class="featured-section">
-            <h2 id="featured-heading">Featured Products:</h2>
-            <div class="featured-small-grid">
+            <!-- Featured Products section -->
+            <div id="featured-section" class="featured-section">
+                <h2 id="featured-heading">Featured Products:</h2>
+                <div class="featured-small-grid">
+                </div>
             </div>
-        </div>
 
-        <h2 id="products-heading">Products:</h2>
-        <div id="products-section" class="products">
-            <!-- This section will be dynamically updated by JavaScript -->
-        </div>
-    </main>
-    
+            <h2 id="products-heading">Products:</h2>
+            <div id="products-section" class="products">
+                <!-- This section will be dynamically updated by JavaScript -->
+            </div>
+        </main>
+    </div>
+
+    <!-- Cart Page -->
+    <div id="cart-page" class="page">
+        <main class="cart-main">
+            <div class="cart-container">
+                <div class="cart-header">
+                    <h1>Shopping Cart</h1>
+                    <button class="continue-shopping" onclick="goToHome()">← Continue Shopping</button>
+                </div>
+
+                <div class="cart-content">
+                    <div class="cart-items-section">
+                        <div id="cart-items" class="cart-items">
+                            <!-- Cart items will be populated by JavaScript -->
+                        </div>
+                        
+                        <div id="empty-cart-message" class="empty-cart" style="display: none;">
+                            <div class="empty-cart-icon">🛒</div>
+                            <h2>Your cart is empty</h2>
+                            <p>Add some items to get started!</p>
+                            <button class="shop-now-btn" onclick="goToHome()">Shop Now</button>
+                        </div>
+                    </div>
+
+                    <div class="cart-summary">
+                        <div class="summary-card">
+                            <h3>Order Summary</h3>
+                            
+                            <div class="summary-row">
+                                <span>Subtotal (<span id="item-count">0</span> items)</span>
+                                <span id="subtotal">£0.00</span>
+                            </div>
+                            
+                            <div class="summary-row">
+                                <span>Shipping</span>
+                                <span id="shipping-cost">FREE</span>
+                            </div>
+                            
+                            <hr>
+                            
+                            <div class="summary-row total-row">
+                                <span><strong>Total</strong></span>
+                                <span id="total-amount"><strong>£0.00</strong></span>
+                            </div>
+                            
+                            <button class="checkout-btn" id="checkout-btn" disabled>
+                                Proceed to Checkout
+                            </button>
+                            
+                            <div class="security-info">
+                                <span>🔒 Secure checkout guaranteed</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
 
     <footer>
         <div class="footer-content">
@@ -68,5 +128,8 @@
             </div>
         </div>
     </footer>
+
+    <script src="app.js"></script>
+    <script src="cart.js"></script>
 </body>
 </html>
