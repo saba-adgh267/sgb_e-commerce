@@ -36,48 +36,70 @@ const productsData = {
 // Shopping Cart functionality with persistent storage
 let cart = [];
 
-// Initialize cart storage if it doesn't exist
-if (!window.cartStorage) {
-    window.cartStorage = [];
+// Initialize cart storage with a more robust approach
+function initializeCartStorage() {
+    if (!window.cartStorage) {
+        window.cartStorage = [];
+    }
+    if (!window.cartInitialized) {
+        window.cartInitialized = true;
+    }
 }
 
 // Load cart from memory storage on page load
 function loadCartFromStorage() {
     try {
-        cart = window.cartStorage || [];
-        if (!Array.isArray(cart)) {
-            cart = [];
-        }
+        initializeCartStorage();
+        cart = Array.isArray(window.cartStorage) ? [...window.cartStorage] : [];
+        console.log('Cart loaded from storage:', cart);
     } catch (e) {
+        console.error('Error loading cart from storage:', e);
         cart = [];
+        initializeCartStorage();
     }
 }
 
 // Save cart to memory storage
 function saveCartToStorage() {
-    window.cartStorage = [...cart];
+    try {
+        initializeCartStorage();
+        window.cartStorage = [...cart];
+        console.log('Cart saved to storage:', window.cartStorage);
+    } catch (e) {
+        console.error('Error saving cart to storage:', e);
+    }
 }
 
 // Cart management functions
 function addToCart(productId, productName, productPrice, productImg) {
+    // Ensure cart is loaded
+    if (!window.cartInitialized) {
+        loadCartFromStorage();
+    }
+    
     const existingItem = cart.find(item => item.id === productId);
     
     if (existingItem) {
         existingItem.quantity += 1;
+        console.log('Updated existing item quantity:', existingItem);
     } else {
-        cart.push({
+        const newItem = {
             id: productId,
             name: productName,
             price: productPrice,
             img: productImg,
             quantity: 1,
             originalPrice: parseFloat(productPrice.replace('£', ''))
-        });
+        };
+        cart.push(newItem);
+        console.log('Added new item to cart:', newItem);
     }
     
     saveCartToStorage();
     updateCartCount();
     showAddToCartFeedback();
+    
+    console.log('Current cart:', cart);
 }
 
 function removeFromCart(productId) {
@@ -91,6 +113,8 @@ function removeFromCart(productId) {
             loadCartItems();
         }
     }
+    
+    console.log('Removed item from cart. Current cart:', cart);
 }
 
 function updateQuantity(productId, newQuantity) {
@@ -111,29 +135,42 @@ function updateQuantity(productId, newQuantity) {
             }
         }
     }
+    
+    console.log('Updated quantity for item', productId, 'to', newQuantity);
 }
 
 function updateCartCount() {
     const cartCountElement = document.getElementById('cart-count');
+    if (!cartCountElement) return;
+    
     const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
     
-    if (cartCountElement) {
-        cartCountElement.textContent = totalItems;
-        
-        // Add animation when count changes
-        cartCountElement.style.animation = 'none';
-        setTimeout(() => {
-            cartCountElement.style.animation = 'addedToCart 0.3s ease';
-        }, 10);
-    }
+    cartCountElement.textContent = totalItems;
+    
+    // Add animation when count changes
+    cartCountElement.style.animation = 'none';
+    setTimeout(() => {
+        cartCountElement.style.animation = 'addedToCart 0.3s ease';
+    }, 10);
+    
+    console.log('Updated cart count:', totalItems);
 }
 
 function showAddToCartFeedback() {
-    // This could be enhanced with a toast notification
+    // Enhanced feedback - could add a toast notification here
+    const cartIcon = document.querySelector('.cart-icon');
+    if (cartIcon) {
+        cartIcon.style.transform = 'scale(1.1)';
+        setTimeout(() => {
+            cartIcon.style.transform = 'scale(1)';
+        }, 200);
+    }
     console.log('Item added to cart!');
 }
 
 function openCart() {
+    // Ensure cart is saved before navigating
+    saveCartToStorage();
     window.location.href = 'cart.html';
 }
 
@@ -176,7 +213,7 @@ function createProductElement(product, container) {
     productDiv.className = 'product';
 
     productDiv.innerHTML = `
-        <img src="${product.img}" alt="${product.name}">
+        <img src="${product.img}" alt="${product.name}" onerror="this.src='https://via.placeholder.com/200x200?text=No+Image'">
         <h3>${product.name}</h3>
         <p>Price: ${product.price}</p>
         <button class="add-to-cart-btn" onclick="addToCart('${product.id}', '${product.name}', '${product.price}', '${product.img}')">
@@ -189,6 +226,7 @@ function createProductElement(product, container) {
 
 // Show default products when the page loads
 document.addEventListener('DOMContentLoaded', () => {
+    console.log('DOM loaded, initializing app...');
     loadCartFromStorage();
     showProducts('default');
     updateCartCount();
@@ -240,7 +278,7 @@ function createDealElement(deal, container, className) {
     dealDiv.className = `deal-box ${className}`;
     
     dealDiv.innerHTML = `
-        <img src="${deal.img}" alt="${deal.name}">
+        <img src="${deal.img}" alt="${deal.name}" onerror="this.src='https://via.placeholder.com/200x200?text=No+Image'">
         <h3>${deal.name}</h3>
         <p>Price: ${deal.price}</p>
         <button class="add-to-cart-btn" onclick="addToCart('${deal.id}', '${deal.name}', '${deal.price}', '${deal.img}')">
@@ -271,3 +309,16 @@ function loadDeals() {
         });
     }
 }
+
+// Ensure cart is always available across pages
+window.addEventListener('beforeunload', () => {
+    saveCartToStorage();
+});
+
+// Handle page visibility changes to maintain cart state
+document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible') {
+        loadCartFromStorage();
+        updateCartCount();
+    }
+});

@@ -44,11 +44,14 @@ const availablePromotions = [
 let appliedPromotions = [];
 
 function loadCartItems() {
-    // Ensure we have the latest cart data from global storage
+    // Make sure we load the latest cart data from storage
     loadCartFromStorage();
     
     const cartItemsContainer = document.getElementById('cart-items');
     const emptyCartMessage = document.getElementById('empty-cart-message');
+    
+    console.log('Loading cart items. Cart length:', cart ? cart.length : 'cart is undefined');
+    console.log('Cart contents:', cart);
     
     if (!cart || cart.length === 0) {
         cartItemsContainer.style.display = 'none';
@@ -62,12 +65,14 @@ function loadCartItems() {
     cartItemsContainer.innerHTML = '';
     
     cart.forEach(item => {
+        console.log('Processing cart item:', item);
+        
         const cartItemDiv = document.createElement('div');
         cartItemDiv.className = 'cart-item';
         cartItemDiv.setAttribute('data-item-id', item.id);
         
         cartItemDiv.innerHTML = `
-            <img src="${item.img}" alt="${item.name}" class="item-image">
+            <img src="${item.img}" alt="${item.name}" class="item-image" onerror="this.src='https://via.placeholder.com/50x50?text=No+Image'">
             <div class="item-details">
                 <h3>${item.name}</h3>
                 <p>Unit Price: ${item.price}</p>
@@ -90,8 +95,15 @@ function loadCartItems() {
 }
 
 function updateCartSummary() {
+    // Make sure we have the latest cart data
+    if (!cart) {
+        loadCartFromStorage();
+    }
+    
     const itemCount = cart.reduce((sum, item) => sum + item.quantity, 0);
     const subtotal = cart.reduce((sum, item) => sum + (item.originalPrice * item.quantity), 0);
+    
+    console.log('Updating summary - Item count:', itemCount, 'Subtotal:', subtotal);
     
     // Update basic info
     document.getElementById('item-count').textContent = itemCount;
@@ -144,7 +156,7 @@ function updateCartSummaryItems() {
         existingSummaryItems.remove();
     }
     
-    if (cart.length > 0) {
+    if (cart && cart.length > 0) {
         const summaryItemsDiv = document.createElement('div');
         summaryItemsDiv.className = 'cart-summary-items';
         
@@ -153,7 +165,7 @@ function updateCartSummaryItems() {
             summaryItemDiv.className = 'summary-item';
             
             summaryItemDiv.innerHTML = `
-                <img src="${item.img}" alt="${item.name}" class="summary-item-image">
+                <img src="${item.img}" alt="${item.name}" class="summary-item-image" onerror="this.src='https://via.placeholder.com/30x30?text=No+Image'">
                 <div class="summary-item-details">
                     <p class="summary-item-name">${item.name}</p>
                     <p class="summary-item-price">${item.price} each</p>
@@ -179,7 +191,11 @@ function updateCartSummaryItems() {
 
 function loadPromotions() {
     const promotionsList = document.getElementById('promotions-list');
+    if (!promotionsList) return;
+    
     promotionsList.innerHTML = '';
+    
+    if (!cart || cart.length === 0) return;
     
     const subtotal = cart.reduce((sum, item) => sum + (item.originalPrice * item.quantity), 0);
     const itemCount = cart.reduce((sum, item) => sum + item.quantity, 0);
@@ -286,18 +302,29 @@ function updateDiscountText() {
 
 // Initialize cart page when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-    if (window.location.pathname.includes('cart.html')) {
-        // Load cart from storage first
-        loadCartFromStorage();
-        loadCartItems();
-        updateCartCount();
+    if (window.location.pathname.includes('cart.html') || window.location.pathname.endsWith('cart.html')) {
+        console.log('Cart page detected, initializing...');
         
-        // Add checkout button functionality
-        document.getElementById('checkout-btn').addEventListener('click', () => {
-            if (cart.length > 0) {
-                alert('Proceeding to checkout... (This would redirect to payment page)');
-                // Here you would typically redirect to a checkout/payment page
+        // Small delay to ensure all scripts are loaded
+        setTimeout(() => {
+            // Load cart from storage first
+            loadCartFromStorage();
+            console.log('Cart loaded from storage:', cart);
+            
+            // Load cart items and update display
+            loadCartItems();
+            updateCartCount();
+            
+            // Add checkout button functionality
+            const checkoutBtn = document.getElementById('checkout-btn');
+            if (checkoutBtn) {
+                checkoutBtn.addEventListener('click', () => {
+                    if (cart && cart.length > 0) {
+                        alert('Proceeding to checkout... (This would redirect to payment page)');
+                        // Here you would typically redirect to a checkout/payment page
+                    }
+                });
             }
-        });
+        }, 100);
     }
 });
